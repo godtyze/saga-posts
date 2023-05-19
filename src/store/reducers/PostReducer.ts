@@ -1,3 +1,4 @@
+import { RootState } from 'store/index';
 import { PostAction, PostActionTypes, PostState } from 'types/post';
 
 const initialState: PostState = {
@@ -22,3 +23,7 @@ export const postReducer = (state = initialState, action: PostAction) => {
       return state;
   }
 };
+
+export const selectPage = (state: RootState) => state.postReducer.page;
+export const selectPosts = (state: RootState) => state.postReducer.posts;
+export const selectLoading = (state: RootState) => state.postReducer.loading;

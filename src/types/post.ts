@@ -20,19 +20,20 @@ export enum PostActionTypes {
   SET_POST_PAGE = 'SET_POST_PAGE',
 }
 
-interface FetchPostsAction {
+export interface FetchPostsAction {
   type: PostActionTypes.FETCH_POSTS;
+  payload: number;
 }
-interface FetchPostsSuccessAction {
+export interface FetchPostsSuccessAction {
   type: PostActionTypes.FETCH_POSTS_SUCCESS;
   payload: Post[];
 }
-interface FetchPostsErrorAction {
+export interface FetchPostsErrorAction {
   type: PostActionTypes.FETCH_POSTS_ERROR;
   payload: string;
 }
 
-interface SetPostPage {
+export interface SetPostPage {
   type: PostActionTypes.SET_POST_PAGE;
   payload: number;
 }

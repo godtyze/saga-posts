@@ -4,7 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import { postReducer } from 'store/reducers/PostReducer';
 import { userReducer } from 'store/reducers/UserReducer';
 
-const sagaMiddleware = createSagaMiddleware();
+export const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
 const rootReducer = combineReducers({
