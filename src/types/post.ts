@@ -28,4 +28,5 @@ interface FetchPostsErrorAction {
   type: PostActionTypes.FETCH_POSTS_ERROR;
   payload: string;
 }
+
 export type PostAction = FetchPostsAction | FetchPostsSuccessAction | FetchPostsErrorAction;

@@ -2,12 +2,14 @@ import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolki
 import createSagaMiddleware from 'redux-saga';
 
 import { postReducer } from 'store/reducers/PostReducer';
+import { userReducer } from 'store/reducers/UserReducer';
 
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
 const rootReducer = combineReducers({
   postReducer,
+  userReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
