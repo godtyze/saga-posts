@@ -4,16 +4,20 @@ const initialState: PostState = {
   posts: [],
   loading: false,
   error: null,
+  page: 1,
+  limit: 10,
 };
 
 export const postReducer = (state = initialState, action: PostAction) => {
   switch (action.type) {
     case PostActionTypes.FETCH_POSTS:
-      return { loading: true, error: null, users: [] };
+      return { ...state, loading: true };
     case PostActionTypes.FETCH_POSTS_SUCCESS:
-      return { loading: false, error: null, users: action.payload };
+      return { ...state, loading: false, posts: action.payload };
     case PostActionTypes.FETCH_POSTS_ERROR:
-      return { loading: false, error: action.payload, users: [] };
+      return { ...state, loading: false, error: action.payload };
+    case PostActionTypes.SET_POST_PAGE:
+      return { ...state, page: action.payload };
     default:
       return state;
   }
