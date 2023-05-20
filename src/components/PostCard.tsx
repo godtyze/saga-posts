@@ -49,7 +49,7 @@ const PostCard: FC<PostProps> = ({ post }) => {
         <Accordion>
           <Accordion.Item eventKey={post.id.toString()}>
             <Accordion.Header>Показать комментарии</Accordion.Header>
-            <Accordion.Body onEnter={onEnter}>
+            <Accordion.Body onEnter={onEnter} className="d-flex flex-column gap-3">
               {commentsLoading ? <Spinner size="sm" /> : commentsArr}
             </Accordion.Body>
           </Accordion.Item>

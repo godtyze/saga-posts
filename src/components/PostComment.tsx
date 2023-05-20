@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-import { Card } from 'react-bootstrap';
-
 interface PostCommentProps {
   body: string;
   email: string;
@@ -9,10 +7,10 @@ interface PostCommentProps {
 
 const PostComment: FC<PostCommentProps> = ({ body, email }) => {
   return (
-    <Card.Text className="border p-2">
-      <h6>{email}</h6>
+    <div className="border p-2">
+      <p className="fw-bold">{email}</p>
       {body}
-    </Card.Text>
+    </div>
   );
 };
 
