@@ -14,6 +14,6 @@ export const fetchPostsError = (payload: string): PostAction => ({
   payload,
 });
 
-export const setTodoPage = (payload: number): PostAction => {
+export const setPostPage = (payload: number): PostAction => {
   return { type: PostActionTypes.SET_POST_PAGE, payload };
 };

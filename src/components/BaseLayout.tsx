@@ -7,7 +7,7 @@ import Header from 'components/Header';
 
 const BaseLayout: FC = () => {
   return (
-    <Container className="app d-flex flex-column gap-3">
+    <Container className="app d-flex flex-column gap-3 p-3">
       <Header />
       <Outlet />
     </Container>

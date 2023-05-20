@@ -6,7 +6,7 @@ import { FetchPostsAction, PostActionTypes } from 'types/post';
 
 function* fetchPostsWorker({ payload }: FetchPostsAction) {
   try {
-    yield delay(1000);
+    yield delay(500);
     const { data } = yield call(fetchPostsFromApi, payload);
     yield put(fetchPostsSuccess(data));
   } catch (e) {
