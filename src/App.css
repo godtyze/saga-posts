@@ -13,3 +13,9 @@ html, body {
 .app {
   min-height: 100vh;
 }
+
+.pagination {
+  position: fixed;
+  top: 92%;
+  z-index: 1000;
+}
