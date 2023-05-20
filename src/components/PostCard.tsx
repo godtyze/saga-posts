@@ -46,7 +46,7 @@ const PostCard: FC<PostProps> = ({ post }) => {
           style={{ cursor: 'pointer' }}
         />
         <Link to={`/user/${post.userId}`}>Автор поста</Link>
-        <Accordion flush>
+        <Accordion>
           <Accordion.Item eventKey={post.id.toString()}>
             <Accordion.Header>Показать комментарии</Accordion.Header>
             <Accordion.Body onEnter={onEnter}>

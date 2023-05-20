@@ -8,12 +8,13 @@ import { Post } from 'types/post';
 
 interface PostListProps {
   posts: Post[];
+  pagination?: boolean;
 }
 
-const PostList: FC<PostListProps> = ({ posts }) => {
+const PostList: FC<PostListProps> = ({ posts, pagination }) => {
   return (
     <Row className="gap-4 justify-content-center">
-      <Pagination />
+      {pagination && <Pagination />}
       {posts.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}

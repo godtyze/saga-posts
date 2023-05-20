@@ -27,4 +27,4 @@ export const postReducer = (state = initialState, action: PostAction) => {
 export const selectPage = (state: RootState) => state.postReducer.page;
 export const selectLimit = (state: RootState) => state.postReducer.limit;
 export const selectPosts = (state: RootState) => state.postReducer.posts;
-export const selectLoading = (state: RootState) => state.postReducer.loading;
+export const selectPostsLoading = (state: RootState) => state.postReducer.loading;

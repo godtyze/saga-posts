@@ -22,7 +22,7 @@ function* fetchUserWorker({ payload }: FetchUserAction) {
 
 function* fetchUserPostsWorker({ payload }: FetchUserAction) {
   try {
-    yield delay(500);
+    yield delay(1000);
     const { data } = yield call(fetchPostsFromApi, { userId: payload });
     yield put(fetchUserPostsSuccess(data));
   } catch (e) {
