@@ -5,6 +5,19 @@ export interface Post {
   body: string;
 }
 
+export interface PostRequestParams {
+  page: number;
+  limit: number;
+}
+
+export interface PostComment {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}
+
 export interface PostState {
   posts: Post[];
   loading: boolean;
@@ -22,7 +35,7 @@ export enum PostActionTypes {
 
 export interface FetchPostsAction {
   type: PostActionTypes.FETCH_POSTS;
-  payload: number;
+  payload: PostRequestParams;
 }
 export interface FetchPostsSuccessAction {
   type: PostActionTypes.FETCH_POSTS_SUCCESS;

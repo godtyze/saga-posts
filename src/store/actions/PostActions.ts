@@ -1,6 +1,6 @@
-import { Post, PostAction, PostActionTypes } from 'types/post';
+import { Post, PostAction, PostActionTypes, PostRequestParams } from 'types/post';
 
-export const fetchPosts = (payload: number): PostAction => ({
+export const fetchPosts = (payload: PostRequestParams): PostAction => ({
   type: PostActionTypes.FETCH_POSTS,
   payload,
 });

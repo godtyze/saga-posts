@@ -6,7 +6,7 @@ const initialState: PostState = {
   loading: false,
   error: null,
   page: 1,
-  limit: 10,
+  limit: 5,
 };
 
 export const postReducer = (state = initialState, action: PostAction) => {
@@ -25,5 +25,6 @@ export const postReducer = (state = initialState, action: PostAction) => {
 };
 
 export const selectPage = (state: RootState) => state.postReducer.page;
+export const selectLimit = (state: RootState) => state.postReducer.limit;
 export const selectPosts = (state: RootState) => state.postReducer.posts;
 export const selectLoading = (state: RootState) => state.postReducer.loading;

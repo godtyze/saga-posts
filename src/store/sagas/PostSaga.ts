@@ -1,4 +1,4 @@
-import { call, takeEvery, put } from 'redux-saga/effects';
+import { call, takeEvery, put, delay } from 'redux-saga/effects';
 
 import { fetchPostsFromApi } from 'api/posts';
 import { fetchPostsError, fetchPostsSuccess } from 'store/actions/PostActions';
@@ -6,6 +6,7 @@ import { FetchPostsAction, PostActionTypes } from 'types/post';
 
 function* fetchPostsWorker({ payload }: FetchPostsAction) {
   try {
+    yield delay(1000);
     const { data } = yield call(fetchPostsFromApi, payload);
     yield put(fetchPostsSuccess(data));
   } catch (e) {
