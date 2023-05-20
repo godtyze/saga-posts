@@ -4,6 +4,8 @@ const initialState: UserState = {
   user: null,
   loading: false,
   error: null,
+  userPosts: [],
+  postsLoading: false,
 };
 
 export const userReducer = (state = initialState, action: UserAction) => {
@@ -11,7 +13,11 @@ export const userReducer = (state = initialState, action: UserAction) => {
     case UserActionTypes.FETCH_USER:
       return { ...state, loading: true };
     case UserActionTypes.FETCH_USER_SUCCESS:
-      return { ...state, loading: false, user: action.payload };
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
+      };
     case UserActionTypes.FETCH_USER_ERROR:
       return { ...state, loading: false, error: action.payload };
     default:
