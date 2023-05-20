@@ -1,11 +1,12 @@
 import { FC, useState } from 'react';
 
 import { Accordion, Card, Image, Spinner } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { fetchCommentFromApi } from 'api/posts';
 import avatar from 'assets/avatar.jpg';
-import { Post, PostComment } from 'types/post';
+import PostComment from 'components/PostComment';
+import { Post, PostCommentType } from 'types/post';
 import { delay } from 'utils';
 
 interface PostProps {
@@ -14,8 +15,11 @@ interface PostProps {
 
 const PostCard: FC<PostProps> = ({ post }) => {
   const navigate = useNavigate();
-  const [comments, setComments] = useState<PostComment[]>();
+  const [comments, setComments] = useState<PostCommentType[]>();
   const [commentsLoading, setCommentsLoading] = useState(false);
+  const commentsArr = comments?.map((comment) => (
+    <PostComment key={comment.id} body={comment.body} email={comment.email} />
+  ));
 
   const onAvatarClick = () => navigate(`/user/${post.userId}`);
 
@@ -34,17 +38,19 @@ const PostCard: FC<PostProps> = ({ post }) => {
       <Card.Body>
         <Card.Title>{post.title}</Card.Title>
         <Card.Text>{post.body}</Card.Text>
-        <Image src={avatar} roundedCircle width={50} onClick={() => onAvatarClick()} />
-        Автор поста
+        <Image
+          src={avatar}
+          roundedCircle
+          width={50}
+          onClick={() => onAvatarClick()}
+          style={{ cursor: 'pointer' }}
+        />
+        <Link to={`/user/${post.userId}`}>Автор поста</Link>
         <Accordion flush>
           <Accordion.Item eventKey={post.id.toString()}>
             <Accordion.Header>Показать комментарии</Accordion.Header>
             <Accordion.Body onEnter={onEnter}>
-              {commentsLoading ? (
-                <Spinner size="sm" />
-              ) : (
-                comments?.map((comment) => <Card.Text key={comment.id}>{comment.body}</Card.Text>)
-              )}
+              {commentsLoading ? <Spinner size="sm" /> : commentsArr}
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>

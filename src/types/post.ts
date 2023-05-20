@@ -10,7 +10,7 @@ export interface PostRequestParams {
   limit: number;
 }
 
-export interface PostComment {
+export interface PostCommentType {
   postId: number;
   id: number;
   name: string;

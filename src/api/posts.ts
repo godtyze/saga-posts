@@ -1,5 +1,5 @@
 import { instance } from 'api';
-import { Post, PostComment, PostRequestParams } from 'types/post';
+import { Post, PostCommentType, PostRequestParams } from 'types/post';
 
 export const fetchPostsFromApi = ({ page, limit }: PostRequestParams) =>
   instance.get<Post[]>('/posts', {
@@ -10,4 +10,4 @@ export const fetchPostsFromApi = ({ page, limit }: PostRequestParams) =>
   });
 
 export const fetchCommentFromApi = (postId: number) =>
-  instance.get<PostComment[]>(`/posts/${postId}/comments`);
+  instance.get<PostCommentType[]>(`/posts/${postId}/comments`);
