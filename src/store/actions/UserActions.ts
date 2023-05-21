@@ -15,9 +15,8 @@ export const fetchUserError = (payload: string): UserAction => ({
   payload,
 });
 
-export const fetchUserPosts = (payload: number): UserAction => ({
+export const fetchUserPosts = (): UserAction => ({
   type: UserActionTypes.FETCH_USER_POSTS,
-  payload,
 });
 export const fetchUserPostsSuccess = (payload: Post[]): UserAction => ({
   type: UserActionTypes.FETCH_USER_POSTS_SUCCESS,

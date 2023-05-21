@@ -41,7 +41,6 @@ export interface FetchUserErrorAction {
 
 export interface FetchUserPostsAction {
   type: UserActionTypes.FETCH_USER_POSTS;
-  payload: number;
 }
 export interface FetchUserPostsSuccessAction {
   type: UserActionTypes.FETCH_USER_POSTS_SUCCESS;

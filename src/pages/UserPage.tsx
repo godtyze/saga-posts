@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import PostList from 'components/PostList';
 import UserCard from 'components/UserCard';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { fetchUser, fetchUserPosts } from 'store/actions/UserActions';
+import { fetchUser } from 'store/actions/UserActions';
 import {
   selectUser,
   selectUserLoading,
@@ -25,7 +25,6 @@ const UserPage: FC = () => {
   useEffect(() => {
     if (userId) {
       dispatch(fetchUser(+userId));
-      dispatch(fetchUserPosts(+userId));
     }
   }, [dispatch, userId]);
 
