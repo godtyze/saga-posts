@@ -4,7 +4,8 @@ export interface Post {
   title: string;
   body: string;
   comments?: PostCommentType[];
-  commentsLoading: boolean;
+  commentsLoading?: boolean;
+  commentsError?: string;
 }
 
 export interface PostRequestParams {
@@ -21,6 +22,18 @@ export interface PostCommentType {
   body: string;
 }
 
+interface PostCommentsPayload {
+  postId: number;
+}
+
+export interface PostCommentsSuccessPayload extends PostCommentsPayload {
+  comments: PostCommentType[];
+}
+
+export interface PostCommentsErrorPayload extends PostCommentsPayload {
+  errorMessage: string;
+}
+
 export interface PostState {
   posts: Post[];
   loading: boolean;
@@ -33,5 +46,8 @@ export enum PostActionTypes {
   FETCH_POSTS = 'post/fetchPosts',
   FETCH_POSTS_SUCCESS = 'post/fetchPostsSuccess',
   FETCH_POSTS_ERROR = 'post/fetchPostsError',
+  FETCH_POST_COMMENTS = 'post/fetchPostComments',
+  FETCH_POST_COMMENTS_SUCCESS = 'post/fetchPostCommentsSuccess',
+  FETCH_POST_COMMENTS_ERROR = 'post/fetchPostCommentsError',
   SET_POST_PAGE = 'post/setPostsPage',
 }

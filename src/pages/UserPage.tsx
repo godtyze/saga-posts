@@ -6,12 +6,16 @@ import { useParams } from 'react-router-dom';
 import PostList from 'components/PostList';
 import UserCard from 'components/UserCard';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { fetchUser } from 'store/slices/UserSlice';
+import { selectPosts, selectPostsLoading } from 'store/slices/PostSlice';
+import { fetchUser, selectUser, selectUserLoading } from 'store/slices/UserSlice';
 
 const UserPage: FC = () => {
   const dispatch = useAppDispatch();
   const { userId } = useParams();
-  const { user, userPosts, postsLoading, loading } = useAppSelector((state) => state.userReducer);
+  const user = useAppSelector(selectUser);
+  const loading = useAppSelector(selectUserLoading);
+  const userPosts = useAppSelector(selectPosts);
+  const postsLoading = useAppSelector(selectPostsLoading);
 
   useEffect(() => {
     if (userId) {

@@ -1,12 +1,17 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import { Accordion, Card, Image, Spinner } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { fetchCommentFromApi } from 'api/posts';
 import avatar from 'assets/avatar.jpg';
 import PostComment from 'components/PostComment';
-import { Post, PostCommentType } from 'types/post';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import {
+  fetchPostComments,
+  selectPostComments,
+  selectPostCommentsLoading,
+} from 'store/slices/PostSlice';
+import { Post } from 'types/post';
 import { delay } from 'utils';
 
 interface PostProps {
@@ -15,8 +20,9 @@ interface PostProps {
 
 const PostCard: FC<PostProps> = ({ post }) => {
   const navigate = useNavigate();
-  const [comments, setComments] = useState<PostCommentType[]>();
-  const [commentsLoading, setCommentsLoading] = useState(false);
+  const dispatch = useAppDispatch();
+  const comments = useAppSelector(selectPostComments(post.id));
+  const commentsLoading = useAppSelector(selectPostCommentsLoading(post.id));
   const commentsArr = comments?.map((comment) => (
     <PostComment key={comment.id} body={comment.body} email={comment.email} />
   ));
@@ -25,11 +31,8 @@ const PostCard: FC<PostProps> = ({ post }) => {
 
   const onEnter = async () => {
     if (!comments) {
-      setCommentsLoading(true);
+      dispatch(fetchPostComments(post.id));
       await delay(500);
-      const { data } = await fetchCommentFromApi(post.id);
-      setComments(data);
-      setCommentsLoading(false);
     }
   };
 

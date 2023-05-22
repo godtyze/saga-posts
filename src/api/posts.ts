@@ -10,5 +10,5 @@ export const fetchPostsFromApi = ({ page, limit, userId }: PostRequestParams) =>
     },
   });
 
-export const fetchCommentFromApi = (postId: number) =>
+export const fetchCommentsFromApi = (postId: number) =>
   instance.get<PostCommentType[]>(`/posts/${postId}/comments`);
