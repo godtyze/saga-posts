@@ -1,5 +1,3 @@
-import { Post } from 'types/post';
-
 export interface User {
   id: number;
   name: string;
@@ -13,8 +11,6 @@ export interface UserState {
   user: User | null;
   loading: boolean;
   error: string | null;
-  userPosts: Post[];
-  postsLoading: boolean;
 }
 
 export enum UserActionTypes {
