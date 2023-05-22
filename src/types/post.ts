@@ -3,6 +3,8 @@ export interface Post {
   id: number;
   title: string;
   body: string;
+  comments?: PostCommentType[];
+  commentsLoading: boolean;
 }
 
 export interface PostRequestParams {
@@ -28,32 +30,8 @@ export interface PostState {
 }
 
 export enum PostActionTypes {
-  FETCH_POSTS = 'FETCH_POSTS',
-  FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS',
-  FETCH_POSTS_ERROR = 'FETCH_POSTS_ERROR',
-  SET_POST_PAGE = 'SET_POST_PAGE',
+  FETCH_POSTS = 'post/fetchPosts',
+  FETCH_POSTS_SUCCESS = 'post/fetchPostsSuccess',
+  FETCH_POSTS_ERROR = 'post/fetchPostsError',
+  SET_POST_PAGE = 'post/setPostsPage',
 }
-
-export interface FetchPostsAction {
-  type: PostActionTypes.FETCH_POSTS;
-  payload: PostRequestParams;
-}
-export interface FetchPostsSuccessAction {
-  type: PostActionTypes.FETCH_POSTS_SUCCESS;
-  payload: Post[];
-}
-export interface FetchPostsErrorAction {
-  type: PostActionTypes.FETCH_POSTS_ERROR;
-  payload: string;
-}
-
-export interface SetPostPage {
-  type: PostActionTypes.SET_POST_PAGE;
-  payload: number;
-}
-
-export type PostAction =
-  | FetchPostsAction
-  | FetchPostsSuccessAction
-  | FetchPostsErrorAction
-  | SetPostPage;

@@ -7,7 +7,6 @@ import { Post } from 'types/post';
 
 interface PostListProps {
   posts: Post[];
-  pagination?: boolean;
 }
 
 const PostList: FC<PostListProps> = ({ posts }) => {

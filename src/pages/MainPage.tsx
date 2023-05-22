@@ -5,19 +5,10 @@ import { Spinner } from 'react-bootstrap';
 import Pagination from 'components/Pagination';
 import PostList from 'components/PostList';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { fetchPosts } from 'store/actions/PostActions';
-import {
-  selectLimit,
-  selectPostsLoading,
-  selectPage,
-  selectPosts,
-} from 'store/reducers/PostReducer';
+import { fetchPosts } from 'store/slices/PostSlice';
 
 const MainPage: FC = () => {
-  const page = useAppSelector(selectPage);
-  const limit = useAppSelector(selectLimit);
-  const posts = useAppSelector(selectPosts);
-  const loading = useAppSelector(selectPostsLoading);
+  const { page, limit, loading, posts } = useAppSelector((state) => state.postReducer);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -27,7 +18,7 @@ const MainPage: FC = () => {
   return (
     <main className="d-flex flex-column justify-content-center flex-grow-1 align-items-center">
       <Pagination />
-      {loading ? <Spinner /> : <PostList posts={posts} pagination={true} />}
+      {loading ? <Spinner /> : <PostList posts={posts} />}
     </main>
   );
 };

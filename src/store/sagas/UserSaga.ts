@@ -1,3 +1,4 @@
+import { PayloadAction } from '@reduxjs/toolkit';
 import { call, takeEvery, put, delay, fork } from 'redux-saga/effects';
 
 import { fetchPostsFromApi } from 'api/posts';
@@ -8,8 +9,8 @@ import {
   fetchUserPostsError,
   fetchUserPostsSuccess,
   fetchUserSuccess,
-} from 'store/actions/UserActions';
-import { FetchUserAction, UserActionTypes } from 'types/user';
+} from 'store/slices/UserSlice';
+import { UserActionTypes } from 'types/user';
 
 function* fetchUserWorker(userId: number) {
   try {
@@ -32,7 +33,7 @@ function* fetchUserPostsWorker(userId: number) {
   }
 }
 
-function* fetchAll({ payload }: FetchUserAction) {
+function* fetchAll({ payload }: PayloadAction<number>) {
   yield fork(fetchUserWorker, payload);
   yield fork(fetchUserPostsWorker, payload);
 }

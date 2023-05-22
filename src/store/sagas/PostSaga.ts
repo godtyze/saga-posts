@@ -1,10 +1,11 @@
+import { PayloadAction } from '@reduxjs/toolkit';
 import { call, takeEvery, put, delay } from 'redux-saga/effects';
 
 import { fetchPostsFromApi } from 'api/posts';
-import { fetchPostsError, fetchPostsSuccess } from 'store/actions/PostActions';
-import { FetchPostsAction, PostActionTypes } from 'types/post';
+import { fetchPostsError, fetchPostsSuccess } from 'store/slices/PostSlice';
+import { PostActionTypes, PostRequestParams } from 'types/post';
 
-function* fetchPostsWorker({ payload }: FetchPostsAction) {
+function* fetchPostsWorker({ payload }: PayloadAction<PostRequestParams>) {
   try {
     yield delay(500);
     const { data } = yield call(fetchPostsFromApi, payload);

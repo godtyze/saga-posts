@@ -5,11 +5,9 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import App from './App';
-import { sagaMiddleware, setupStore } from 'store';
-import { rootWatcher } from 'store/sagas';
+import { setupStore } from 'store';
 
 const store = setupStore();
-sagaMiddleware.run(rootWatcher);
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
