@@ -19,3 +19,7 @@ html, body {
   top: 92%;
   z-index: 1000;
 }
+
+a {
+  text-decoration: none;
+}
