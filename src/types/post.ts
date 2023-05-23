@@ -49,5 +49,5 @@ export enum PostActionTypes {
   FETCH_POST_COMMENTS = 'post/fetchPostComments',
   FETCH_POST_COMMENTS_SUCCESS = 'post/fetchPostCommentsSuccess',
   FETCH_POST_COMMENTS_ERROR = 'post/fetchPostCommentsError',
-  SET_POST_PAGE = 'post/setPostsPage',
+  SET_POSTS_PAGE = 'post/setPostsPage',
 }
